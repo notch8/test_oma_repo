@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Enabler Test Specification for Lightweight M2M</title>
+  <meta charset="UTF-8">
+  <script src="http://openmobilealliance.github.io/Tools/builds/respec-oma-common.js" async class="remove"></script>
+  <script class="remove">
+    var respecConfig = {
+                                                        // for editor use
+                                                        docType: "ETS", // options are BASE, RD, AD, TS, SUP, ETS, ORG
+                                                        subtitle: "OMA-ETS-LightweightM2M-V1_0_1-20170606-D",
+                                                        shortName:  "shortName",
+                                                        otherLinks: [{
+                                                          key: "Other Link",
+                                                          data: [{
+                                                            value: "Link Name",
+                                                            href: "#location"
+                                                          }]
+                                                        }],
+                                                        editors: [{
+                                                          name:       "Editor Name",
+                                                          url:        "http://example.com/",
+                                                          company:    "Editor Company",
+                                                          companyURL: "http://example.org/",
+                                                          mailto:     "editor@example.com",
+                                                          note:       "editor note"
+                                                        }],
+    
+                                                        authors: [{
+                                                          name:       "Author Name",
+                                                          url:        "http://example.com/",
+                                                          company:    "Author Company",
+                                                          companyURL: "http://example.org/",
+                                                          mailto:     "author@example.com",
+                                                          note:       "author note"
+                                                        }],
+    
+                                                        interactiveLinks: [{
+                                                          name: "Link Name",
+                                                          description: "Link Description",
+                                                          uri: "http://example.com/",
+                                                        },{
+                                                          name: "Second Link Name",
+                                                          description: "Second Link Description",
+                                                          uri: "http://example2.com/",
+                                                        }],
+    
+                                                        // for staff only
+                                                        specStatus: "DRAFT", // options are Draft, Candidate, Approved, Historic
+                                                        publishDate: ""
+                                                      };
+  </script>
+</head><section id="toc"></section>
+<section id="tof"></section>
+<section>
+<h2>Scope</h2>
+<p>This document describes in detail available test cases for LightweightM2M as specified in OMA-TS-LightweightM2M-V1_0.</p>
+<p>The test cases are split into two categories, conformance, and interoperability test cases.</p>
+<p>The conformance test cases are aimed to verify the adherence to normative requirements described in the technical specifications.</p>
+<p>The interoperability test cases are aimed to verify that implementations of the specifications work satisfactorily.</p>
+<p>If either conformance or interoperability tests do not exist at the creation of the test specification this part should be marked not available.</p>
+</section>
+<section>
+<h2>References</h2>
+<section style="text-align: left;">
+<h2>Normative References</h2>
+<table style="height: 47px;" width="1024">
+<tbody>
+<tr style="text-align: left;">
+<td width="144">[3GPP-TS_23.003]</td>
+<td width="528">3GPP TS 23.003 "Numbering, addressing and identification"</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[CoAP]</td>
+<td width="528">Shelby, Z., Hartke, K., Bormann, C., and B. Frank, "Constrained Application Protocol (CoAP)", draft-ietf-core-coap-18, Jun 2013</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[ETSI TS 102.221]</td>
+<td width="528">"Smart Cards; UICC-Terminal interface; Physical and logical characteristics", (ETSI TS 102 221 release 11), <a href="http://www.etsi.org/">URL:http://www.etsi.org/</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[GlobalPlatform SCP 02]</td>
+<td width="528">GlobalPlatform v2.2.1 - January 2011 - Appendix E: Secure Channel Protocol 02 (SCP 02)</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[IOPPROC]</td>
+<td width="528">"OMA Interoperability Policy and Process", Version 1.13, Open Mobile Alliance&trade;, OMA-IOP-Process-V1_13, <a href="http://www.openmobilealliance.org/">URL:http://www.openmobilealliance.org/</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[LwM2M-AD]</td>
+<td width="528">"Lightweight Machine to Machine Architecture", Open Mobile Alliance&trade;, OMA-AD-LightweightM2M-V1_0, <a href="http://www.openmobilealliance.org/">URL:http://www.openmobilealliance.org/</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[LwM2M-TS]</td>
+<td width="528">"Lightweight Machine to Machine Technical Specification", Open Mobile Alliance&trade;, OMA-TS-LightweightM2M-V1_0, <a href="http://www.openmobilealliance.org/">URL:http://www.openmobilealliance.org/</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[OBSERVE]</td>
+<td width="528">Hartke, K. "Observing Resources in CoAP", draft-ietf-core-observe-11 (work in progress), Oct 2013</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[PKCS#15]</td>
+<td width="528">PKCS #15 v1.1: Cryptographic Token Information Syntax Standard", RSA Laboratories, 6 June 2000, <a href="ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-15/pkcs-15v1_1.pdf">ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-15/pkcs-15v1_1.pdf</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">
+<p>[RFC2119]</p>
+</td>
+<td width="528">
+<p>"Key words for use in RFCs to Indicate Requirement Levels", S. Bradner, March 1997, <a href="http://www.ietf.org/rfc/rfc2119.txt">URL:http://www.ietf.org/rfc/rfc2119.txt</a></p>
+</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC2234]</td>
+<td width="528">"Augmented BNF for Syntax Specifications: ABNF". D. Crocker, Ed., P. Overell. November 1997, <a href="http://www.ietf.org/rfc/rfc2234.txt">URL:http://www.ietf.org/rfc/rfc2234.txt</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC4122]</td>
+<td width="528">"A Universally Unique Identifier (UUID) URN Namespace", P. Leach, et al. July 2005, <a href="http://www.ietf.org/rfc/rfc4122.txt">URL:http://www.ietf.org/rfc/rfc4122.txt</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC5246]</td>
+<td width="528">The Transport Layer Security (TLS) Protocol Version 1.2</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC5289]</td>
+<td width="528">TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC5487]</td>
+<td width="528">Pre-Shared Key Cipher Suites for TLS with SHA-256/384 and AES Galois Counter Mode</td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC6347]</td>
+<td width="528">Rescorla, E. and N. Modadugu, "Datagram Transport Layer Security Version 1.2", January 2012, <a href="http://www.ietf.org/rfc/rfc6347.txt">URL:http://www.ietf.org/rfc/rfc6347.txt</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC6655]</td>
+<td width="528">McGrew, D. and D. Bailey, "AES-CCM Cipher Suites for TLS", July 2012, <a href="http://www.ietf.org/rfc/rfc6655.txt">http://www.ietf.org/rfc/rfc6655.txt</a></td>
+</tr>
+<tr style="text-align: left;">
+<td width="144">[RFC6690]</td>
+<td width="528">Shelby, Z. "Constrained RESTful Environments (CoRE) Link Format", RFC6690, Aug 2012</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section style="text-align: left;">
+<h2>Informative References</h2>
+<table style="height: 57px;" width="1025">
+<tbody>
+<tr>
+<td width="144">[DMREPPRO]</td>
+<td width="528">&ldquo;OMA Device Management Representation Protocol, Version 1.3&rdquo;. Open Mobile Alliance&trade;. OMA-TS-DM_RepPro-V1_3. <a href="http://www.openmobilealliance.org/">URL:http://www.openmobilealliance.org/</a></td>
+</tr>
+<tr>
+<td width="144">
+<p>[OMADICT]</p>
+</td>
+<td width="528">
+<p>"Dictionary for OMA Specifications", Version 2.9, Open Mobile Alliance&trade;, OMA-ORG-Dictionary-V2_9, <a href="http://www.openmobilealliance.org/">URL:http://www.openmobilealliance.org/</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<h2>Terminology and Conventions</h2>
+<section>
+<h2>Conventions</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119].</p>
+<p>All sections and appendixes, except "Scope", are normative, unless they are explicitly indicated to be informative.</p>
+<p>The following numbering scheme is used:</p>
+<p><strong>xxx-y.z-con-number</strong> where:<br />xxx &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Name of an enabler, e.g. MMS or Browsing<br />y.z &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Version of enabler release, e.g. 1.2 or 1.2.1<br />'con'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indicating this test is a conformance test case<br />number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leap number for the test case</p>
+<p>Or</p>
+<p><strong>xxx-y.z-int-number</strong> where:<br />xxx &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Name of an enabler, e.g. MMS or Browsing<br />y.z &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Version of enabler release, e.g. 1.2 or 1.2.1<br />'int' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Indicating this test is an interoperability test case<br />number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leap number for the test case</p>
+</section>
+<section>
+<h2>Definitions</h2>
+<dl>
+<dt><dfn data-lt="1) The customer's realisation of a service through M2M - e.g. satnav, smart metering 2) Individual software components that run on top of the device's operating system.Access Point Name">Application</dfn></dt>
+<dd>
+<p>1) The customer's realization of a service through M2M - e.g. satnav, smart metering</p>
+2) Individual software components that run on top of the device's operating system.Access Point Name</dd>
+</dl>
+<dfn data-lt="The hardware that is realising a function for the customer e.g. a smart meter.">Device</dfn>
+<dl>
+<dd>
+<p class="AbbrDesc">The hardware that is realizing a function for the customer e.g. a smart meter.</p>
+</dd>
+</dl>
+<dl>
+<dt><dfn data-lt="A modular component of a device e.g. the radio module housing the SIM">Module</dfn></dt>
+<dd>A modular component of a device e.g. the radio module housing the SIM</dd>
+</dl>
+</section>
+<section style="text-align: left;">
+<h2>Abbreviations</h2>
+<dl>
+<dt><abbr title="Application Programming Interface">API</abbr></dt>
+<dd>Application Programming Interface</dd>
+</dl>
+<dl>
+<dt><abbr title="Access Point Name">APN</abbr></dt>
+<dd>Access Point Name</dd>
+</dl>
+<dl>
+<dt><abbr title="Constrained Application Protocol">CoAP</abbr></dt>
+<dd>Constrained Application Protocol</dd>
+</dl>
+<dl>
+<dt><abbr title="Conformance">CON</abbr></dt>
+<dd>Conformance</dd>
+</dl>
+<dl>
+<dt><abbr title="Device Management">DM</abbr></dt>
+<dd>Device Management</dd>
+</dl>
+<dl>
+<dt><abbr title="Global Data Service Platform">GDSP</abbr></dt>
+<dd>Global Data Service Platform</dd>
+</dl>
+<dl>
+<dt><abbr title="Graphical User Interface">GUI</abbr></dt>
+<dd>Graphical User Interface</dd>
+</dl>
+<dl>
+<dt><abbr title="International Mobile Equipment Identity">IMEI</abbr></dt>
+<dd>International Mobile Equipment Identity</dd>
+</dl>
+<dl>
+<dt><abbr title="International Mobile Subscriber Identity">IMSI</abbr></dt>
+<dd>International Mobile Subscriber Identity</dd>
+</dl>
+<dl>
+<dt><abbr title="Interoperability">IOP</abbr></dt>
+<dd>Interoperability</dd>
+</dl>
+<dl>
+<dt><abbr title="Lightweight Machine to Machine (refers to this OMA enabler)">LwM2M</abbr></dt>
+<dd>Lightweight Machine to Machine (refers to this OMA enabler)</dd>
+</dl>
+<dl>
+<dt><abbr title="Machine to Machine">M2M</abbr></dt>
+<dd>Machine to Machine</dd>
+</dl>
+<dl>
+<dt><abbr title="Mobile Station International Subscriber Directory Number">MSISDN</abbr></dt>
+<dd>Mobile Station International Subscriber Directory Number</dd>
+</dl>
+<dl>
+<dt><abbr title="Open Mobile Alliance">OMA</abbr></dt>
+<dd>Open Mobile Alliance</dd>
+</dl>
+<dl>
+<dt><abbr title="Operating Company">OpCo</abbr></dt>
+<dd>Operating Company</dd>
+</dl>
+<dl>
+<dt><abbr title="Operating System">OS</abbr></dt>
+<dd>Operating System</dd>
+</dl>
+<dl>
+<dt><abbr title="Subscriber Interface Module">SIM</abbr></dt>
+<dd>Subscriber Interface Module</dd>
+</dl>
+<dl>
+<dt><abbr title="User Interface">UI</abbr></dt>
+<dd>User Interface</dd>
+</dl>
+</section>
+</section>
+<section>
+<h2>Introduction</h2>
+<p>The purpose of this document is to provide test cases for LightweightM2M Enabler Release V1.0.</p>
+<p>The implementation of some features is optional for the Clients and/or the Servers in the LightweightM2M Enabler. The tests associated with these optional features are marked as "(Includes Optional Features)" in the test specification.</p>
+<p>&nbsp;The following items on an overall level are needed to adequately test the LwM2M enabler:</p>
+<ul>
+<li>A LwM2M Server</li>
+<li>A LwM2M client e.g. embedded in a M2M device or module connected via UDP and SMS with the LwM2M Server</li>
+</ul>
+<p>The LwM2M enabler tests are carried out using the LwM2M protocol and objects, and using the underlying protocols such as [CoAP].</p>
+<p>The four data formats used in that document, namely Plain Text, Opaque, TLV and JSON data formats are respectively associated to the text/plain, application/octet-stream, application/vnd.oma.lwm2m+tlv, application/vnd.oma.lwm2m+json Media Types referred by LwM2M TS 1.0 and registered in IANA.</p>
+</section>
+<section>
+<h2>LightweightM2M Conformance Test Cases</h2>
+<p>None.</p>
+</section>
+<section>
+<h2>LightweightM2M Interoperability Test Cases</h2>
+<section>
+<h2>LwM2M Core Specification Test cases [0-999]</h2>
+</section>
+<section>
+<h2>Bootstrap Interface: [0-99]</h2>
+<p>&lt;<em>Test Cases to fill up</em>&gt;</p>
+<section>
+<h2>Registration Interface [100-199]</h2>
+<section>
+<h2>LightweightM2M-1.0-int-101 - Initial Registration</h2>
+<table id="Table 1: Test Information for &lt;yyy&gt; Conformance Test " style="width: 1007px; height: 887px;"><caption>Test Information for LightweightM2M-1.0-int-101 Interoperability Test</caption>
+<thead>
+<tr>
+<td><strong>Test Case Id</strong></td>
+<td>LightweightM2M-1.0-int-101</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Object</strong></td>
+<td>Client and Server</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test Case </strong></p>
+<p><strong>Description</strong></p>
+</td>
+<td>Test that the Client registers with the Server.</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Test code</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>
+<ul>
+<li>The Client supports the minimum Configuration B.1 as defined in Appendix B.</li>
+<li>Device is turned on.</li>
+<li>The bootstrap procedure has been completed or the required bootstrap information is available to the Client.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test</strong></p>
+<p><strong>Procedure</strong></p>
+</td>
+<td>
+<p>The Client automatically registers at the Server, once this information is available.</p>
+<p>Normal flow:</p>
+<ol>
+<li>Registration message (CoAP POST) is sent from Client to Server.</li>
+<li>Client receives Success message (2.01 Created) from the Server.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td><strong>Pass-Criteria</strong></td>
+<td>
+<ol style="list-style-type: upper-alpha;">
+<li>Server has received REGISTER operation</li>
+<li>In test step 1, Server gets the following information:</li>
+<ol>
+<li>Endpoint Client Name</li>
+<li>registration lifetime</li>
+<li>LwM2M version</li>
+<li>binding mode (optional)</li>
+<li>SMS number (optional)</li>
+<li>Objects and Object Instances (mandatory and optional objects / object instances); possibly with Version of Objects</li>
+</ol>
+<li>In test step 2, Client has received &ldquo;Success&rdquo; message from Server (2.01 Created)</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-102 &ndash; Registration Update</h2>
+<table id="Table 1: Test Information for &lt;yyy&gt; Conformance Test " style="width: 1007px; height: 887px;"><caption>Test Information for LightweightM2M-1.0-int-102 Interoperability Test</caption>
+<thead>
+<tr>
+<td><strong>Test Case Id</strong></td>
+<td>LightweightM2M-1.0-int-102</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Object</strong></td>
+<td>Client and Server</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test Case </strong></p>
+<p><strong>Description</strong></p>
+</td>
+<td>Test that the client updates the registration information on the Server.</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Test code</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>
+<ul>
+<li>The Client supports the minimum Configuration C.1 as defined in Annex C</li>
+<li>Client is registered with the Server</li>
+<li>The Server will be prepared to change the Client lifetime registration to 20 sec to set the conditions for a Client UPDATE</li>
+<li>On option, the Client will be prepared to update its registration before the registration time expires.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test</strong></p>
+<p><strong>Procedure</strong></p>
+</td>
+<td>
+<p>The Client is registered with the Server and updates its registration according to the change of its registration information (Lifetime) (UPDATE Operation)</p>
+<p>Normal flow:</p>
+<ol>
+<li>UPDATE (Registration) message (CoAP POST) is sent from Client to Server with Lifetime parameter set to 20 sec</li>
+<li>The Server set the lifetime resource of the Server Object Instance to 20 sec (CoAP PUT /1/0/1)</li>
+<li>On option, before the registration expires (20 sec) the Client send a new UPDATE message without parameter to the Server</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td><strong>Pass-Criteria</strong></td>
+<td>
+<ol style="list-style-type: upper-alpha;">
+<li>In test step 1., the Server received a Success Message (2.04 Changed) related to its setting request</li>
+<li>In test step 2., Server has received UPDATE operation with lifetime parameter = 20 sec</li>
+<li>In test step 2., Client has received &ldquo;Success&rdquo; (2.04) message from Server related to the UPDATE command</li>
+<li>In test step 3., either the Server received an UPDATE operation with no parameter or a de_registratoin occurs in the Server after the 20s</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-103 &ndash; Deregistration</h2>
+<table id="Table 1: Test Information for &lt;yyy&gt; Conformance Test " style="width: 1007px; height: 887px;"><caption>Test Information for LightweightM2M-1.0-int-103 &ndash; Deregistration</caption>
+<thead>
+<tr>
+<td><strong>Test Case Id</strong></td>
+<td>LightweightM2M-1.0-int-103</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Object</strong></td>
+<td>Client and Server</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test Case </strong></p>
+<p><strong>Description</strong></p>
+</td>
+<td>Test that the client is able to deregister at the Server.</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Test code</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>
+<ul>
+<li>The Client supports the minimum Configuration 3 as defined in Annex&nbsp; C</li>
+<li>Client is registered with the Server</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test</strong></p>
+<p><strong>Procedure</strong></p>
+</td>
+<td>
+<p>Client will no longer be available, thus, it should de-register</p>
+<p>Normal flow:</p>
+<ol>
+<li>The Server sends EXECUTE command on the Disable Resource of the Server Object (ID:1) Instance.</li>
+<li>Server receives the success message from the Client (2.04 Changed)</li>
+<li>Deregistration message (CoAP DELETE) is sent from Client to Server.</li>
+<li>Client receives Success message (2.02 Deleted) from the Server.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td><strong>Pass-Criteria</strong></td>
+<td>
+<ol style="list-style-type: upper-alpha;">
+<li>In test step 3., the Server receives the Deregistration message from the Client</li>
+<li>In test step 4., the Client receives success message (2.02 Deleted) form the Server</li>
+<li>Client is removed from the servers registration database</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-104 &ndash; Registration Update Trigger</h2>
+<table id="Table 1: Test Information for &lt;yyy&gt; Conformance Test " style="width: 1007px; height: 887px;"><caption>Test Information for LightweightM2M-1.0-int-104 Interoperability Test</caption>
+<thead>
+<tr>
+<td><strong>Test Case Id</strong></td>
+<td>LightweightM2M-1.0-int-104</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Test Object</strong></td>
+<td>Client and Server</td>
+</tr>
+<tr>
+<td><strong>Test Case Description</strong></td>
+<td>Test that the Client updates its registration with the Server when triggered with the Registration Update Trigger (see LwM2M Server object)</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Test code</strong></td>
+<td>n/a</td>
+</tr>
+<tr>
+<td><strong>Preconditions</strong></td>
+<td>
+<ul>
+<li>The Client supports the minimum Configuration 2&nbsp;&nbsp; as defined in Annex&nbsp; C</li>
+<li>Device is turned on</li>
+<li>The bootstrap procedure has been completed or the required bootstrap information is available to the client</li>
+<li>The Client&nbsp; is registered with the Server with a Lifetime of 20 sec (LightweightM2M-1.0-int-102)</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p><strong>Test</strong></p>
+<p><strong>Procedure</strong></p>
+</td>
+<td>
+<p>Before Client Registration lifetime expired (lifetime is 20 sec) the Server sends Registration Update Trigger and the Client updates its registration via the UPDATE Operation</p>
+<p>Normal flow:</p>
+<ol>
+<li>Before Client registration expires on the Server (for test purposes a short registration lifetime is chosen 20 sec)</li>
+<li>A Registration Update Trigger message CoAP POST /1/0/8 is sent from Server to Client</li>
+<li>UPDATE (Registration) message (CoAP POST) is sent from Client to Server</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td><strong>Pass-Criteria</strong></td>
+<td>
+<p>&nbsp;</p>
+<ol>
+<li>In test step 1., Client received a Registration Update Trigger via SMS</li>
+<li>In test step 1., Server received a &ldquo;Success&rdquo; message (2.04 Changed) related to the EXECUTE command</li>
+<li>In test step 2., Server received UPDATE operation without parameter</li>
+<li>In test step 2., Client has received &ldquo;Success&rdquo; message (2.04 Changed) from Server related to its UPDATE message</li>
+</ol>
+<p>After test step 2., the Client is still registered in the Server while the initial Registration lifetime expired</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<h2>Device management &amp; Service Enablement Interface [200-299]</h2>
+<section>
+<h2>LightweightM2M-1.0-int-201 &ndash; Querying basic information in Plain Text format</h2>
+<p>&nbsp;</p>
+</section>
+</section>
+<section>
+<h2>Information Reporting Interface [300-399]</h2>
+</section>
+<section>
+<h2>Security [400-499]</h2>
+</section>
+<section>
+<h2>Core Specific Objects Test cases [500-999]</h2>
+<section>
+<h2>Security Object (ID 0) [500-549]</h2>
+</section>
+<section>
+<h2>Server Object (ID 1) [550-599]</h2>
+<section>
+<h2>6.1.6.2.1 LightweightM2M-1.0-int-551 &ndash; Access Check to the Resources</h2>
+<p>LightweightM2M-1.0-int-215 Test Case&nbsp; (Setting basic information in TLV format) is covering the same functional scope than this LightweightM2M-1.0-int-551 Test Case. The Test Status of both Test Cases must be considered as identical.</p>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-555 &ndash; Check of the Disable (De-Registration) capability</h2>
+<p>&lt;Test Case to fill-up&gt;</p>
+<p>Note :&nbsp; LightweightM2M-1.0-int-103 Test Case&nbsp; (De-Registration) is partially addressing the scope of this LightweightM2M-1.0-int-555 Test Case.</p>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-556 &ndash; Check of the Update Registration capability</h2>
+<p>LightweightM2M-1.0-int-104 Test Case&nbsp; (Registration Update Trigger) is covering the same functional scope than this LightweightM2M-1.0-int-556 Test Case. The Test Status of both Test Cases must be considered as identical.</p>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-560 &ndash; Delayed Report Notification</h2>
+<p>&lt;Test Cases to fill-up&gt;</p>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-565 &ndash; Create Object Instance</h2>
+<p>&lt;Test Cases to fill-up&gt;</p>
+</section>
+<section>
+<h2>LightweightM2M-1.0-int-566 &ndash; Delete Object Instance</h2>
+<p>&lt;Test Cases to fill-up&gt;</p>
+</section>
+</section>
+<section>
+<h2>Access Control Object (ID 2) [600-649]</h2>
+</section>
+<section>
+<h2>LwM2M Device Object (ID 3) [650-699]</h2>
+</section>
+</section>
+</section>
+</section>
+<div style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+<div style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+<div style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">[OMADICT]</div>
+<div style="display: none;">[OMADICT]</div>
+<div style="display: none;">[OMADICT]</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&nbsp;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">&lt;xxx-y.z-con-number, e.g. IMPS-1.2-con-001&gt;</div>
+<div style="display: none;">Test Object</div>
+<div style="display: none;">&lt;xxx-y.z-int-number, e.g. IMPS-1.2-int-001&gt;</div>
+<div style="display: none;">The SCR (s) listed in this section should directly apply to this test case's Test Object and to the ETR requirement(s) listed in the below ETR Reference section. Listing of the SCRs tested implicitly should be avoided.</div>
+<section class="appendix">
+<h2>Additional Information</h2>
+<section>
+<h2>Example of Test Configuration and Setup</h2>
+<p>The following hardware components were part of a test setup.</p>
+<ul>
+<li>M2M device equipped with LwM2M client</li>
+<li>Computer that runs the browser interface to the LwM2M Server component</li>
+<li>Server that runs the LwM2M Server software</li>
+<li>USIM provisioned for use on the network.</li>
+<li>External appliance which is connected directly to M2M device (e.g. light, temperature sensor, motor).</li>
+</ul>
+<p>In addition, the demonstration setup shall include the following software components:</p>
+<ul>
+<li>Measurement software which enables to see e.g. LwM2M messages and CoAP messages.
+<ul>
+<li>The software shall enable
+<ul>
+<li>GUI to trigger the chosen test cases</li>
+<li>To see the flow of information between client and Server, e.g. on LwM2M protocol level and on CoAP transport level.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="appendix">
+<h2>LwM2M Configurations</h2>
+<p>When a Test Case references a certain Configuration of that Annex, it means the features of that configuration are the minimum ones which must be supported by LwM2M Clients &amp; Servers to pass that test; a richer configuration (superset) may be used instead, as long as it still contains the minimum features.&nbsp;</p>
+<section>
+<h2>Basic Configuration 1</h2>
+<p>PSK Mode support, no SMS support&nbsp;</p>
+<table id="PSK Mode support, no SMS support" style="width: 100%;"><caption style="text-align: left;">Configuration 1 -&nbsp;PSK Mode support, no SMS support&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp; </strong>{"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11/0","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Basic Configuration 2</h2>
+<p>PSK Mode &amp; SMS supports</p>
+<table id="Basic Configuration 2" style="width: 100%;"><caption style="text-align: left;">Configuration 2 -&nbsp;PSK Mode &amp; SMS supports</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/6","v":3},</p>
+<p>&nbsp; {"n":"0/0/7","sv":&lt;KIc,KID,SPI,TAR&gt;},&nbsp;&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/8","sv":&lt;SMS Secret Keys&gt;},&nbsp;&nbsp;&nbsp;&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/9","sv":&lt;MSISDN&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp; </strong>{"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11/0","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"US"},</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 3</h2>
+<p>This configuration is a superset of Configuration C.1&nbsp;</p>
+<table id="This configuration is a superset of Configuration C.1" style="width: 100%;"><caption style="text-align: left;">Configuration 3 -&nbsp;This configuration is a superset of Configuration C.1&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;&nbsp;{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p>&nbsp; {"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - DisableDevice Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 4</h2>
+<p>Configuration 4 is a superset of Configuration 3 and can be used instead ; it implements the optional Resources related to external or internal battery which the voltage could vary.</p>
+<table id="Configuration 4" style="width: 100%;"><caption style="text-align: left;">Configuration 4&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp;</strong> {"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/6/0","v":1},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery</p>
+<p>&nbsp; {"n":"3/0/6/1","v":2},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery</p>
+<p>&nbsp; {"n":"3/0/7/0","v":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery mV</p>
+<p>&nbsp; {"n":"3/0/7/1","v":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery mV</p>
+<p>&nbsp; {"n":"3/0/8/0","v":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery mA</p>
+<p>&nbsp; {"n":"3/0/8/1","v":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery mA</p>
+<p>&nbsp; {"n":"3/0/9","v":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Internal Battery level</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 5</h2>
+<p>This configuration is a superset of Configuration C.1 and can be used instead; it implements the full Connectivity Monitoring Object ID:4</p>
+<table id="Configuration 5" style="width: 100%;"><caption style="text-align: left;">Configuration 5&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp;</strong> {"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp;&nbsp;{"n":"4/0/0","v":&lt;Network Bearer&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"4/0/1/0","v":&lt;Available Network Bearer 0&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"4/0/1/1","v":&lt;Available Network Bearer 1&gt;},</p>
+<p>&nbsp; {"n":"4/0/2","v":&lt;Radio Signal Strength&gt;},</p>
+<p>&nbsp; {"n":"4/0/3","v":&lt;Link Quality&gt;},</p>
+<p>&nbsp; {"n":"4/0/4/0","sv":&lt;IP Address 0&gt;},</p>
+<p>&nbsp; {"n":"4/0/4/1","sv":&lt;IP Address 1&gt;},</p>
+<p>&nbsp; {"n":"4/0/5/0","sv":&lt;Router IP Address 0&gt;},</p>
+<p>&nbsp; {"n":"4/0/5/1","sv":&lt;Router IP Address 1&gt;},</p>
+<p>&nbsp; {"n":"4/0/6","v":&lt;Link Utilization&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"4/0/7/0","sv":&lt;APN 0&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"4/0/7/1","sv":&lt;APN 1&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"4/0/8","v":&lt;Cell ID&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"4/0/9","v":&lt;SMNC&gt;},</p>
+<p>&nbsp; {"n":"4/0/10","v":&lt;SMCC&gt;}</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 6</h2>
+<p>Configuration 6 is a superset of Configuration 4 and can be used instead; the configuration C.4, has been completed with all the optional resources of the Device Object.</p>
+<table id="Configuration 6" style="width: 100%;"><caption style="text-align: left;">Configuration 6&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{ &ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp;</strong> {"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/6/0","v":1},&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp; Internal Battery</p>
+<p>&nbsp; {"n":"3/0/6/1","v":2},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp; External Battery</p>
+<p>&nbsp; {"n":"3/0/7/0","v":&lt;Internal &nbsp;Battery Voltage mV&gt;},&nbsp;</p>
+<p>&nbsp; {"n":"3/0/7/1","v":&lt;External Battery Voltage mV &gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"3/0/8/0","v":&lt;Internal &nbsp;Battery Current mA&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"3/0/8/1","v":&lt;External Battery Current mA &gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"3/0/9","v":&lt; Internal Battery Level&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"3/0/10","v":&lt;Memory Free&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":&lt;Error Code&gt;},</p>
+<p>&nbsp; {"n":"3/0/13","t":&lt;Current Time &gt;},</p>
+<p>&nbsp; {"n":"3/0/14","sv":&lt;UTC Offset&gt;},</p>
+<p>&nbsp; {"n":"3/0/15","sv":&lt;TimeZone &gt;},</p>
+<p>&nbsp; {"n":"3/0/16","sv":U},</p>
+<p>&nbsp; {"n":"3/0/17","sv":&lt;Device Type&gt;},</p>
+<p>&nbsp; {"n":"3/0/18","sv":&lt;Hardware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/19","sv":&lt;Software Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/20","sv":&lt;Battery Status&gt;},</p>
+<p>&nbsp; {"n":"3/0/21","sv":&lt;Memory Total&gt;},</p>
+<p>&nbsp; {"n":"3/0/22","ol":&lt;ExtDevInfo&gt;}</p>
+<p>&nbsp;&nbsp; &nbsp;]</p>
+<p>}</p>
+<p>Server Object ID:1 implements the mandatory&nbsp; Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp;&nbsp; - Reboot</p>
+<p>Device Object ID:3 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:5&nbsp;&nbsp; - Factory Reset</p>
+<p>Device Object ID:3 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:12 &ndash; Reset Error Code</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 7</h2>
+<p>This configuration is a superset of Configuration C.1 and can be used instead ; it implements the full Location Object ID:6</p>
+<table id="Configuration 7" style="width: 100%;"><caption style="text-align: left;">Configuration 7&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp; </strong>{"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp; {"n":"6/0/0","v":43.5723},&nbsp;</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"6/0/1","v":153.21760},&nbsp;</p>
+<p>&nbsp; {"n":"6/0/2","v":140},</p>
+<p>&nbsp; {"n":"6/0/3","v":100},</p>
+<p>&nbsp; {"n":"6/0/4","sv":&nbsp;"0"},&nbsp; // opaque&nbsp; 3GPP-TS- 23.032&nbsp;&nbsp; Base64 representation</p>
+<p>&nbsp; {"n":"6/0/5","t&rdquo;:1367491215},&nbsp; // time</p>
+<p>&nbsp; {"n":"6/0/6","v": 3}</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 8</h2>
+<table id="Configuration 8" style="width: 100%;"><caption style="text-align: left;">Configuration 8&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp; </strong>{"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp;&nbsp;{"n":"5/0/0","sv":&lt;Firmaware Package&gt;},&nbsp;&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"5/0/1","sv":&lt;Package URI&gt;},</p>
+<p>&nbsp; {"n":"5/0/3","v":&lt;State&gt;},</p>
+<p>&nbsp; {"n":"5/0/5","v":&lt;Update Result&gt;},</p>
+<p>&nbsp; {"n":"5/0/6","sv":&lt;Package Name&gt;},</p>
+<p>&nbsp; {"n":"5/0/7","sv":&lt;Package Version&gt;},</p>
+<p>&nbsp;&nbsp;{"n":"5/0/8","v":&lt;Firmware Update Protocol Support&gt; },&nbsp; // CoaP only if absent</p>
+<p>&nbsp; {"n":"5/0/9","v":&lt;Firmware Update Delivery Method&gt; }</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+<p>Device Object ID:5 implements the mandatory Executable Resource ID:2&nbsp; - Update</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Configuration 9</h2>
+<p>This configuration is a superset of Configuration C.1 and can be used instead ; it implements the full Connectivity Statistics Object ID:7</p>
+<table id="Configuration 9" style="width: 100%;"><caption style="text-align: left;">Configuration 9&nbsp;</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp; {"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp;</strong> {"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/2","v":1},</p>
+<p>&nbsp; {"n":"1/0/3","v":10},</p>
+<p>&nbsp; {"n":"1/0/5","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp; {"n":"7/0/0","v":0},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"7/0/1","v":0},&nbsp;</p>
+<p>&nbsp; {"n":"7/0/2","v":0},</p>
+<p>&nbsp; {"n":"7/0/3","v":0},</p>
+<p>&nbsp; {"n":"7/0/4","v":&nbsp;0},&nbsp;</p>
+<p>&nbsp; {"n":"7/0/5","v&rdquo;:0},</p>
+<p>&nbsp; {"n":"7/0/8","v":0}</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+<p>Device Object ID:7 implements the mandatory Executable Resource ID:6&nbsp; - Start</p>
+<p>Device Object ID:7 implements the mandatory Executable Resource ID:7&nbsp; - Stop</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+<section>
+<h2>Basic Connectivity Management Configuration 10</h2>
+<p>PSK Mode support, no SMS support</p>
+<table id="Basic Connectivity Management Configuration 10" style="width: 100%;"><caption style="text-align: left;">Basic Connectivity Management Configuration 10 -&nbsp;PSK Mode support, no SMS support</caption>
+<thead>
+<tr>
+<td>&nbsp;{&ldquo;bn&rdquo;:&ldquo;/&rdquo;,
+<p>&nbsp;&nbsp; &ldquo;e&rdquo;:[</p>
+<p>&nbsp;<strong>&nbsp;</strong>{"n":"0/0/0","sv": &lt;LwM2M Server URI&gt;},</p>
+<p>&nbsp; {"n":"0/0/1","bv":false},</p>
+<p>&nbsp; {"n":"0/0/2","v":0},</p>
+<p>&nbsp;&nbsp;{"n":"0/0/3","sv":&lt;PSK Identity&gt;},&nbsp; // opaque in Base64</p>
+<p>&nbsp; {"n":"0/0/4","sv": &lt;n/a&gt; },</p>
+<p>&nbsp; {"n":"0/0/5","sv": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp; {"n":"0/0/10","v":1},</p>
+<p><strong>&nbsp; </strong>{"n":"1/0/0","v":1},</p>
+<p>&nbsp; {"n":"1/0/1","v":86400},</p>
+<p>&nbsp; {"n":"1/0/6","bv":false},</p>
+<p>&nbsp; {"n":"1/0/7","sv":"U"},</p>
+<p>&nbsp; {"n":"3/0/0","sv":&lt;Manufacturer Name&gt;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"3/0/1","sv":&lt;Model Name&gt;},</p>
+<p>&nbsp; {"n":"3/0/2","sv":&lt;Serial Number&gt;},</p>
+<p>&nbsp; {"n":"3/0/3","sv":&lt;Firmware Version&gt;},</p>
+<p>&nbsp; {"n":"3/0/11/0","v":0},</p>
+<p>&nbsp; {"n":"3/0/16","sv":"U"},</p>
+<p>&nbsp; {"n":"10/0/06","v":&lt;tbd&gt;},</p>
+<p>&nbsp; {"n":"10/0/11","ov":&rdquo;11:0&rdquo;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"11/0/0","sv":&lt;Profile Name&gt;},</p>
+<p>&nbsp; {"n":"11/0/3","b":true},</p>
+<p>&nbsp; {"n":"12/0/0","sv":&lt;wlan identifier&gt;&rdquo;},</p>
+<p><strong>&nbsp;</strong>&nbsp;{"n":"12/0/1","v":0},</p>
+<p>&nbsp; {"n":"12/0/3","v":0},</p>
+<p>&nbsp; {"n":"12/0/4","sv":&lt;MAC address&gt;},</p>
+<p>&nbsp; {"n":"12/0/8","v":0},</p>
+<p>&nbsp; {"n":"12/0/4","v":0},</p>
+<p>&nbsp; {"n":"12/0/14","v":0},</p>
+<p>&nbsp; {"n":"12/0/15","v":0},</p>
+<p>&nbsp;&nbsp;&nbsp; ]</p>
+<p>}</p>
+<p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+<p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+</td>
+</tr>
+</thead>
+</table>
+</section>
+</section>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">Client and Server</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">LightweightM2M-1.0-int-201</div>
+<div style="display:none">Client and Server</div>
+<div style="display:none">Client and Server</div>
