@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Enabler Test Specification for Lightweight M2M</title>
+  <meta charset="UTF-8">
+  <script src="http://openmobilealliance.github.io/Tools/builds/respec-oma-common.js" async class="remove"></script>
+  <script class="remove">
+    var respecConfig = {
+                                                                // for editor use
+                                                                docType: "ETS", // options are BASE, RD, AD, TS, SUP, ETS, ORG
+                                                                subtitle: "OMA-ETS-LightweightM2M-V1_0_1-20170606-D",
+                                                                shortName:  "shortName",
+                                                                otherLinks: [{
+                                                                  key: "Other Link",
+                                                                  data: [{
+                                                                    value: "Link Name",
+                                                                    href: "#location"
+                                                                  }]
+                                                                }],
+                                                                editors: [{
+                                                                  name:       "Editor Name",
+                                                                  url:        "http://example.com/",
+                                                                  company:    "Editor Company",
+                                                                  companyURL: "http://example.org/",
+                                                                  mailto:     "editor@example.com",
+                                                                  note:       "editor note"
+                                                                }],
+    
+                                                                authors: [{
+                                                                  name:       "Author Name",
+                                                                  url:        "http://example.com/",
+                                                                  company:    "Author Company",
+                                                                  companyURL: "http://example.org/",
+                                                                  mailto:     "author@example.com",
+                                                                  note:       "author note"
+                                                                }],
+    
+                                                                interactiveLinks: [{
+                                                                  name: "Link Name",
+                                                                  description: "Link Description",
+                                                                  uri: "http://example.com/",
+                                                                },{
+                                                                  name: "Second Link Name",
+                                                                  description: "Second Link Description",
+                                                                  uri: "http://example2.com/",
+                                                                }],
+    
+                                                                // for staff only
+                                                                specStatus: "DRAFT", // options are Draft, Candidate, Approved, Historic
+                                                                publishDate: ""
+                                                              };
+  </script>
+</head><body>
+  <section id="toc"></section>
+  <section id="tof"></section>
+  <section>
+    <h2>Scope</h2>
+    <p>This document describes in detail available test cases for LightweightM2M as specified in OMA-TS-LightweightM2M-V1_0.</p>
+    <p>The test cases are split into two categories, conformance, and interoperability test cases.</p>
+    <p>The conformance test cases are aimed to verify the adherence to normative requirements described in the technical specifications.</p>
+    <p>The interoperability test cases are aimed to verify that implementations of the specifications work satisfactorily.</p>
+    <p>If either conformance or interoperability tests do not exist at the creation of the test specification this part should be marked not available.</p>
+  </section>
+  <section>
+    <h2>References</h2>
+    <section style="text-align: left;" data-mce-style="text-align: left;">
+      <h2>Normative References</h2>
+      <table style="height: 47px;" width="1024" data-mce-style="height: 47px;" class="mce-item-table">
+        <tbody>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[3GPP-TS_23.003]</td>
+            <td width="528">3GPP <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TS" data-mce-index="0">TS</span> 23.003 "Numbering, addressing and identification"</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="1">CoAP</span>]</td>
+            <td width="528">Shelby, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Z" data-mce-index="2">Z</span>., <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Hartke" data-mce-index="3">Hartke</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="K" data-mce-index="4">K</span>., <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Bormann" data-mce-index="5">Bormann</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="6">C</span>., and B. Frank, "Constrained Application Protocol (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="7">CoAP</span>)", draft-ietf-core-coap-18, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Jun" data-mce-index="8">Jun</span> 2013</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ETSI" data-mce-index="9">ETSI</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TS" data-mce-index="10">TS</span> 102.221]</td>
+            <td width="528">"Smart Cards; <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="UICC-Terminal" data-mce-index="11">UICC-Terminal</span> interface; Physical and logical characteristics", (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ETSI" data-mce-index="12">ETSI</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TS" data-mce-index="13">TS</span> 102 221 release 11), <a href="http://www.etsi.org/" data-mce-href="http://www.etsi.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="14">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="etsi" data-mce-index="15">etsi</span>.org/</a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="GlobalPlatform" data-mce-index="16">GlobalPlatform</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SCP" data-mce-index="17">SCP</span> 02]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="GlobalPlatform" data-mce-index="18">GlobalPlatform</span> v2.2.1 - January 2011 - Appendix <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="E" data-mce-index="19">E</span>: Secure Channel Protocol 02 (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SCP" data-mce-index="20">SCP</span> 02)</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IOPPROC" data-mce-index="21">IOPPROC</span>]</td>
+            <td width="528">"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMA" data-mce-index="22">OMA</span> Interoperability Policy and Process", Version 1.13, Open Mobile Alliance™, OMA-IOP-Process-V1_13, <a href="http://www.openmobilealliance.org/" data-mce-href="http://www.openmobilealliance.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="23">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="openmobilealliance" data-mce-index="24">openmobilealliance</span>.org/</a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[LwM2M-AD]</td>
+            <td width="528">"Lightweight Machine to Machine Architecture", Open Mobile Alliance™, OMA-AD-LightweightM2M-V1_0, <a href="http://www.openmobilealliance.org/" data-mce-href="http://www.openmobilealliance.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="25">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="openmobilealliance" data-mce-index="26">openmobilealliance</span>.org/</a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[LwM2M-TS]</td>
+            <td width="528">"Lightweight Machine to Machine Technical Specification", Open Mobile Alliance™, OMA-TS-LightweightM2M-V1_0, <a href="http://www.openmobilealliance.org/" data-mce-href="http://www.openmobilealliance.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="27">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="openmobilealliance" data-mce-index="28">openmobilealliance</span>.org/</a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[OBSERVE]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Hartke" data-mce-index="29">Hartke</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="K" data-mce-index="30">K</span>. "Observing Resources in <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="31">CoAP</span>", draft-ietf-core-observe-11 (work in progress), Oct 2013</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PKCS" data-mce-index="32">PKCS</span>#15]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PKCS" data-mce-index="33">PKCS</span> #15 v1.1: Cryptographic Token Information Syntax Standard", <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="RSA" data-mce-index="34">RSA</span> Laboratories, 6 June 2000, <a href="ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-15/pkcs-15v1_1.pdf" data-mce-href="ftp://ftp.rsasecurity.com/pub/pkcs/pkcs-15/pkcs-15v1_1.pdf"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ftp" data-mce-index="35">ftp</span>://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ftp" data-mce-index="36">ftp</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rsasecurity" data-mce-index="37">rsasecurity</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="com" data-mce-index="38">com</span>/pub/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="pkcs" data-mce-index="39">pkcs</span>/pkcs-15/pkcs-15v1_1.pdf</a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">
+              <p>[RFC2119]</p>
+            </td>
+            <td width="528">
+              <p>"Key words for use in RFCs to Indicate Requirement Levels", S. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Bradner" data-mce-index="40">Bradner</span>, March 1997, <a href="http://www.ietf.org/rfc/rfc2119.txt" data-mce-href="http://www.ietf.org/rfc/rfc2119.txt">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="41">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ietf" data-mce-index="42">ietf</span>.org/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rfc" data-mce-index="43">rfc</span>/rfc2119.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="txt" data-mce-index="44">txt</span></a></p>
+            </td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC2234]</td>
+            <td width="528">"Augmented <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="BNF" data-mce-index="45">BNF</span> for Syntax Specifications: <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ABNF" data-mce-index="46">ABNF</span>". D. Crocker, Ed., <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="P" data-mce-index="47">P</span>. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Overell" data-mce-index="48">Overell</span>. November 1997, <a href="http://www.ietf.org/rfc/rfc2234.txt" data-mce-href="http://www.ietf.org/rfc/rfc2234.txt">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="49">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ietf" data-mce-index="50">ietf</span>.org/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rfc" data-mce-index="51">rfc</span>/rfc2234.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="txt" data-mce-index="52">txt</span></a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC4122]</td>
+            <td width="528">"A Universally Unique Identifier (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="UUID" data-mce-index="53">UUID</span>) URN <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Namespace" data-mce-index="54">Namespace</span>", <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="P" data-mce-index="55">P</span>. Leach, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="et" data-mce-index="56">et</span> al. July 2005, <a href="http://www.ietf.org/rfc/rfc4122.txt" data-mce-href="http://www.ietf.org/rfc/rfc4122.txt">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="57">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ietf" data-mce-index="58">ietf</span>.org/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rfc" data-mce-index="59">rfc</span>/rfc4122.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="txt" data-mce-index="60">txt</span></a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC5246]</td>
+            <td width="528">The Transport Layer Security (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLS" data-mce-index="61">TLS</span>) Protocol Version 1.2</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC5289]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLS" data-mce-index="62">TLS</span> Elliptic Curve Cipher Suites with SHA-256/384 and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="AES" data-mce-index="63">AES</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Galois" data-mce-index="64">Galois</span> Counter Mode (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="GCM" data-mce-index="65">GCM</span>)</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC5487]</td>
+            <td width="528">Pre-Shared Key Cipher Suites for <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLS" data-mce-index="66">TLS</span> with SHA-256/384 and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="AES" data-mce-index="67">AES</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Galois" data-mce-index="68">Galois</span> Counter Mode</td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC6347]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Rescorla" data-mce-index="69">Rescorla</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="E" data-mce-index="70">E</span>. and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="N" data-mce-index="71">N</span>. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Modadugu" data-mce-index="72">Modadugu</span>, "<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Datagram" data-mce-index="73">Datagram</span> Transport Layer Security Version 1.2", January 2012, <a href="http://www.ietf.org/rfc/rfc6347.txt" data-mce-href="http://www.ietf.org/rfc/rfc6347.txt">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="74">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ietf" data-mce-index="75">ietf</span>.org/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rfc" data-mce-index="76">rfc</span>/rfc6347.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="txt" data-mce-index="77">txt</span></a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC6655]</td>
+            <td width="528"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="McGrew" data-mce-index="78">McGrew</span>, D. and D. Bailey, "<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="AES-CCM" data-mce-index="79">AES-CCM</span> Cipher Suites for <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLS" data-mce-index="80">TLS</span>", July 2012, <a href="http://www.ietf.org/rfc/rfc6655.txt" data-mce-href="http://www.ietf.org/rfc/rfc6655.txt">http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="81">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ietf" data-mce-index="82">ietf</span>.org/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="rfc" data-mce-index="83">rfc</span>/rfc6655.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="txt" data-mce-index="84">txt</span></a></td>
+          </tr>
+          <tr style="text-align: left;" data-mce-style="text-align: left;">
+            <td width="144">[RFC6690]</td>
+            <td width="528">Shelby, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Z" data-mce-index="85">Z</span>. "Constrained <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="RESTful" data-mce-index="86">RESTful</span> Environments (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoRE" data-mce-index="87">CoRE</span>) Link Format", RFC6690, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Aug" data-mce-index="88">Aug</span> 2012</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section style="text-align: left;" data-mce-style="text-align: left;">
+      <h2>Informative References</h2>
+      <table style="height: 57px;" width="1025" data-mce-style="height: 57px;" class="mce-item-table">
+        <tbody>
+          <tr>
+            <td width="144">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="DMREPPRO" data-mce-index="89">DMREPPRO</span>]</td>
+            <td width="528">“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMA" data-mce-index="90">OMA</span> Device Management Representation Protocol, Version 1.3”. Open Mobile Alliance™. OMA-TS-DM_RepPro-V1_3. <a href="http://www.openmobilealliance.org/" data-mce-href="http://www.openmobilealliance.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="91">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="openmobilealliance" data-mce-index="92">openmobilealliance</span>.org/</a></td>
+          </tr>
+          <tr>
+            <td width="144">
+              <p>[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMADICT" data-mce-index="93">OMADICT</span>]</p>
+            </td>
+            <td width="528">
+              <p>"Dictionary for <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMA" data-mce-index="94">OMA</span> Specifications", Version 2.9, Open Mobile Alliance™, OMA-ORG-Dictionary-V2_9, <a href="http://www.openmobilealliance.org/" data-mce-href="http://www.openmobilealliance.org/">URL:http://<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="www" data-mce-index="95">www</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="openmobilealliance" data-mce-index="96">openmobilealliance</span>.org/</a></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
+  <section>
+    <h2>Terminology and Conventions</h2>
+    <section>
+      <h2>Conventions</h2>
+      <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119].</p>
+      <p>All sections and appendixes, except "Scope", are normative, unless they are explicitly indicated to be informative.</p>
+      <p>The following numbering scheme is used:</p>
+      <p><strong><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="97">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="98">z-con-number</span></strong> where:<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx" data-mce-index="99">xxx</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Name of an <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="100">enabler</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="101">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="102">g</span>. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="MMS" data-mce-index="103">MMS</span> or Browsing<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="y" data-mce-index="104">y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z" data-mce-index="105">z</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Version of <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="106">enabler</span> release, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="107">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="108">g</span>. 1.2 or 1.2.1<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="'con'" data-mce-index="109">'con'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indicating this test is a conformance test case<br>
+        number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leap number for the test case</p>
+      <p>Or</p>
+      <p><strong><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="110">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-int-number" data-mce-index="111">z-int-number</span></strong> where:<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx" data-mce-index="112">xxx</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Name of an <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="113">enabler</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="114">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="115">g</span>. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="MMS" data-mce-index="116">MMS</span> or Browsing<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="y" data-mce-index="117">y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z" data-mce-index="118">z</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Version of <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="119">enabler</span> release, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="120">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="121">g</span>. 1.2 or 1.2.1<br>
+        <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="'int'" data-mce-index="122">'int'</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Indicating this test is an interoperability test case<br>
+        number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leap number for the test case</p>
+    </section>
+    <section>
+      <h2>Definitions</h2>
+      <dl>
+        <dt><dfn data-lt="1) The customer's realisation of a service through M2M - e.g. satnav, smart metering 2) Individual software components that run on top of the device's operating system.Access Point Name">Application</dfn></dt>
+        <dd>
+          <p>1) The customer's realization of a service through M2M - <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="123">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="124">g</span>. <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="satnav" data-mce-index="125">satnav</span>, smart metering</p>
+          2) Individual software components that run on top of the device's operating system.Access Point <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="NameDevice" data-mce-index="126">Name</span></dd>
+      </dl>
+      <dfn data-lt="The hardware that is realising a function for the customer e.g. a smart meter."><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="NameDevice" data-mce-index="126">Device</span></dfn>
+      <dl>
+        <dd>
+          <p class="AbbrDesc">The hardware that is realizing a function for the customer <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="127">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="128">g</span>. a smart meter.</p>
+        </dd>
+      </dl>
+      <dl>
+        <dt><dfn data-lt="A modular component of a device e.g. the radio module housing the SIM">Module</dfn></dt>
+        <dd>A modular component of a device <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="129">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="130">g</span>. the radio module housing the <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SIM" data-mce-index="131">SIM</span></dd>
+      </dl>
+    </section>
+    <section style="text-align: left;" data-mce-style="text-align: left;">
+      <h2>Abbreviations</h2>
+      <dl>
+        <dt><abbr title="Application Programming Interface">API</abbr></dt>
+        <dd>Application Programming Interface</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Access Point Name"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="APN" data-mce-index="132">APN</span></abbr></dt>
+        <dd>Access Point Name</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Constrained Application Protocol"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="133">CoAP</span></abbr></dt>
+        <dd>Constrained Application Protocol</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Conformance">CON</abbr></dt>
+        <dd>Conformance</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Device Management">DM</abbr></dt>
+        <dd>Device Management</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Global Data Service Platform"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="GDSP" data-mce-index="134">GDSP</span></abbr></dt>
+        <dd>Global Data Service Platform</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Graphical User Interface">GUI</abbr></dt>
+        <dd>Graphical User Interface</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="International Mobile Equipment Identity"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IMEI" data-mce-index="135">IMEI</span></abbr></dt>
+        <dd>International Mobile Equipment Identity</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="International Mobile Subscriber Identity"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IMSI" data-mce-index="136">IMSI</span></abbr></dt>
+        <dd>International Mobile Subscriber Identity</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Interoperability"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IOP" data-mce-index="137">IOP</span></abbr></dt>
+        <dd>Interoperability</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Lightweight Machine to Machine (refers to this OMA enabler)">LwM2M</abbr></dt>
+        <dd>Lightweight Machine to Machine (refers to this <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMA" data-mce-index="138">OMA</span> <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="139">enabler</span>)</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Machine to Machine">M2M</abbr></dt>
+        <dd>Machine to Machine</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Mobile Station International Subscriber Directory Number"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="MSISDN" data-mce-index="140">MSISDN</span></abbr></dt>
+        <dd>Mobile Station International Subscriber Directory Number</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Open Mobile Alliance"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMA" data-mce-index="141">OMA</span></abbr></dt>
+        <dd>Open Mobile Alliance</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Operating Company"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OpCo" data-mce-index="142">OpCo</span></abbr></dt>
+        <dd>Operating Company</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Operating System">OS</abbr></dt>
+        <dd>Operating System</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="Subscriber Interface Module"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SIM" data-mce-index="143">SIM</span></abbr></dt>
+        <dd>Subscriber Interface Module</dd>
+      </dl>
+      <dl>
+        <dt><abbr title="User Interface">UI</abbr></dt>
+        <dd>User Interface</dd>
+      </dl>
+    </section>
+  </section>
+  <section>
+    <h2>Introduction</h2>
+    <p>The purpose of this document is to provide test cases for LightweightM2M <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Enabler" data-mce-index="144">Enabler</span> Release V1.0.</p>
+    <p>The implementation of some features is optional for the Clients and/or the Servers in the LightweightM2M <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Enabler" data-mce-index="145">Enabler</span>. The tests associated with these optional features are marked as "(Includes Optional Features)" in the test specification.</p>
+    <p>&nbsp;The following items on an overall level are needed to adequately test the LwM2M <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="146">enabler</span>:</p>
+    <ul>
+      <li>A LwM2M Server</li>
+      <li>A LwM2M client <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="147">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="148">g</span>. embedded in a M2M device or module connected via <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="UDP" data-mce-index="149">UDP</span> and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="150">SMS</span> with the LwM2M Server</li>
+    </ul>
+    <p>The LwM2M <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="enabler" data-mce-index="151">enabler</span> tests are carried out using the LwM2M protocol and objects, and using the underlying protocols such as [<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="152">CoAP</span>].</p>
+    <p>The four data formats used in that document, namely Plain Text, Opaque, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLV" data-mce-index="153">TLV</span> and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="JSON" data-mce-index="154">JSON</span> data formats are respectively associated to the text/plain, application/octet-stream, application/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="vnd" data-mce-index="155">vnd</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="oma" data-mce-index="156">oma</span>.lwm2m+<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="tlv" data-mce-index="157">tlv</span>, application/<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="vnd" data-mce-index="158">vnd</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="oma" data-mce-index="159">oma</span>.lwm2m+<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="json" data-mce-index="160">json</span> Media Types referred by LwM2M <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TS" data-mce-index="161">TS</span> 1.0 and registered in <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IANA" data-mce-index="162">IANA</span>.</p>
+  </section>
+  <section>
+    <h2>LightweightM2M Conformance Test Cases</h2>
+    <p>None.</p>
+  </section>
+  <section>
+    <h2>LightweightM2M Interoperability Test Cases</h2>
+    <section>
+      <h2>LwM2M Core Specification Test cases [0-999]</h2>
+    </section>
+    <section>
+      <h2>Bootstrap Interface: [0-99]</h2>
+      <p>&lt;<em>Test Cases to fill up</em>&gt;</p>
+      <section>
+        <h2>Registration Interface [100-199]</h2>
+        <section>
+          <h2>LightweightM2M-1.0-int-101 - Initial Registration</h2>
+          <table id="Table 1: Test Information for <yyy> Conformance Test " style="width: 948px; height: 887px;" data-mce-style="width: 1007px; height: 887px;" class="mce-item-table"><caption>Test Information for LightweightM2M-1.0-int-101 Interoperability Test</caption>
+            <thead>
+              <tr>
+                <td style="width: 112px;"><strong>Test Case Id</strong></td>
+                <td style="width: 836px;">LightweightM2M-1.0-int-101</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 112px;"><strong>Test Object</strong></td>
+                <td style="width: 836px;">Client and Server</td>
+              </tr>
+              <tr>
+                <td style="width: 112px;">
+                  <p><strong>Test Case </strong></p>
+                  <p><strong>Description</strong></p>
+                </td>
+                <td style="width: 836px;">Test that the Client registers with the Server.</td>
+              </tr>
+              <tr>
+                <td style="width: 112px;"><strong>Tool</strong></td>
+                <td style="width: 836px;"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="163">n</span>/a</td>
+              </tr>
+              <tr>
+                <td style="width: 112px;"><strong>Test code</strong></td>
+                <td style="width: 836px;"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="164">n</span>/a</td>
+              </tr>
+              <tr>
+                <td style="width: 112px;"><strong>Preconditions</strong></td>
+                <td style="width: 836px;">
+                  <ul>
+                    <li>The Client supports the minimum Configuration B.1 as defined in Appendix B.</li>
+                    <li>Device is turned on.</li>
+                    <li>The bootstrap procedure has been completed or the required bootstrap information is available to the Client.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 112px;">
+                  <p><strong>Test</strong></p>
+                  <p><strong>Procedure</strong></p>
+                </td>
+                <td style="width: 836px;">
+                  <p>The Client automatically registers at the Server, once this information is available.</p>
+                  <p>Normal flow:</p>
+                  <ol>
+                    <li>Registration message (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="165">CoAP</span> POST) is sent from Client to Server.</li>
+                    <li>Client receives Success message (2.01 Created) from the Server.</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 112px;"><strong>Pass-Criteria</strong></td>
+                <td style="width: 836px;">
+                  <ol style="list-style-type: upper-alpha;" data-mce-style="list-style-type: upper-alpha;">
+                    <li>Server has received REGISTER operation</li>
+                    <li>In test step 1, Server gets the following information:</li>
+                    <ol>
+                      <li>Endpoint Client Name</li>
+                      <li>registration lifetime</li>
+                      <li>LwM2M version</li>
+                      <li>binding mode (optional)</li>
+                      <li><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="166">SMS</span> number (optional)</li>
+                      <li>Objects and Object Instances (mandatory and optional objects / object instances); possibly with Version of Objects</li>
+                    </ol>
+                    <li>In test step 2, Client has received “Success” message from Server (2.01 Created)</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>LightweightM2M-1.0-int-102 – Registration Update</h2>
+          <table id="Table 1: Test Information for <yyy> Conformance Test " style="width: 1007px; height: 824px;" data-mce-style="width: 1007px; height: 887px;" class="mce-item-table"><caption>Test Information for LightweightM2M-1.0-int-102 Interoperability Test</caption>
+            <thead>
+              <tr style="height: 17px;">
+                <td style="height: 17px;"><strong>Test Case Id</strong></td>
+                <td style="height: 17px;">LightweightM2M-1.0-int-102</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="height: 64px;">
+                <td style="height: 64px;"><strong>Test Object</strong></td>
+                <td style="height: 64px;">Client and Server</td>
+              </tr>
+              <tr style="height: 113px;">
+                <td style="height: 113px;">
+                  <p><strong>Test Case </strong></p>
+                  <p><strong>Description</strong></p>
+                </td>
+                <td style="height: 113px;">Test that the client updates the registration information on the Server.</td>
+              </tr>
+              <tr style="height: 54px;">
+                <td style="height: 54px;"><strong>Tool</strong></td>
+                <td style="height: 54px;"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="167">n</span>/a</td>
+              </tr>
+              <tr style="height: 54px;">
+                <td style="height: 54px;"><strong>Test code</strong></td>
+                <td style="height: 54px;"><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="168">n</span>/a</td>
+              </tr>
+              <tr style="height: 153px;">
+                <td style="height: 153px;"><strong>Preconditions</strong></td>
+                <td style="height: 153px;">
+                  <ul>
+                    <li>The Client supports the minimum Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="169">C</span>.1 as defined in Annex <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="170">C</span></li>
+                    <li>Client is registered with the Server</li>
+                    <li>The Server will be prepared to change the Client lifetime registration to 20 sec to set the conditions for a Client UPDATE</li>
+                    <li>On option, the Client will be prepared to update its registration before the registration time expires.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr style="height: 216px;">
+                <td style="height: 216px;">
+                  <p><strong>Test</strong></p>
+                  <p><strong>Procedure</strong></p>
+                </td>
+                <td style="height: 216px;">
+                  <p>The Client is registered with the Server and updates its registration according to the change of its registration information (Lifetime) (UPDATE Operation)</p>
+                  <p>Normal flow:</p>
+                  <ol>
+                    <li>UPDATE (Registration) message (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="171">CoAP</span> POST) is sent from Client to Server with Lifetime parameter set to 20 sec</li>
+                    <li>The Server set the lifetime resource of the Server Object Instance to 20 sec (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="172">CoAP</span> PUT /1/0/1)</li>
+                    <li>On option, before the registration expires (20 sec) the Client send a new UPDATE message without parameter to the Server</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr style="height: 153px;">
+                <td style="height: 153px;"><strong>Pass-Criteria</strong></td>
+                <td style="height: 153px;">
+                  <ol style="list-style-type: upper-alpha;" data-mce-style="list-style-type: upper-alpha;">
+                    <li>In test step 1., the Server received a Success Message (2.04 Changed) related to its setting request</li>
+                    <li>In test step 2., Server has received UPDATE operation with lifetime parameter = 20 sec</li>
+                    <li>In test step 2., Client has received “Success” (2.04) message from Server related to the UPDATE command</li>
+                    <li>In test step 3., either the Server received an UPDATE operation with no parameter or a <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="de_registratoin" data-mce-index="173">de_registratoin</span> occurs in the Server after the 20s</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>LightweightM2M-1.0-int-103 – <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Deregistration" data-mce-index="174">Deregistration</span></h2>
+          <table id="Table 1: Test Information for <yyy> Conformance Test " style="width: 1007px; height: 887px;" data-mce-style="width: 1007px; height: 887px;" class="mce-item-table"><caption>Test Information for LightweightM2M-1.0-int-103 – <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Deregistration" data-mce-index="175">Deregistration</span></caption>
+            <thead>
+              <tr>
+                <td><strong>Test Case Id</strong></td>
+                <td>LightweightM2M-1.0-int-103</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Test Object</strong></td>
+                <td>Client and Server</td>
+              </tr>
+              <tr>
+                <td>
+                  <p><strong>Test Case </strong></p>
+                  <p><strong>Description</strong></p>
+                </td>
+                <td>Test that the client is able to <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="deregister" data-mce-index="176">deregister</span> at the Server.</td>
+              </tr>
+              <tr>
+                <td><strong>Tool</strong></td>
+                <td><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="177">n</span>/a</td>
+              </tr>
+              <tr>
+                <td><strong>Test code</strong></td>
+                <td><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="178">n</span>/a</td>
+              </tr>
+              <tr>
+                <td><strong>Preconditions</strong></td>
+                <td>
+                  <ul>
+                    <li>The Client supports the minimum Configuration 3 as defined in Annex&nbsp; <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="179">C</span></li>
+                    <li>Client is registered with the Server</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p><strong>Test</strong></p>
+                  <p><strong>Procedure</strong></p>
+                </td>
+                <td>
+                  <p>Client will no longer be available, thus, it should de-register</p>
+                  <p>Normal flow:</p>
+                  <ol>
+                    <li>The Server sends EXECUTE command on the Disable Resource of the Server Object (ID:1) Instance.</li>
+                    <li>Server receives the success message from the Client (2.04 Changed)</li>
+                    <li><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Deregistration" data-mce-index="180">Deregistration</span> message (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="181">CoAP</span> DELETE) is sent from Client to Server.</li>
+                    <li>Client receives Success message (2.02 Deleted) from the Server.</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Pass-Criteria</strong></td>
+                <td>
+                  <ol style="list-style-type: upper-alpha;" data-mce-style="list-style-type: upper-alpha;">
+                    <li>In test step 3., the Server receives the <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Deregistration" data-mce-index="182">Deregistration</span> message from the Client</li>
+                    <li>In test step 4., the Client receives success message (2.02 Deleted) form the Server</li>
+                    <li>Client is removed from the servers registration database</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>LightweightM2M-1.0-int-104 – Registration Update Trigger</h2>
+          <table id="Table 1: Test Information for <yyy> Conformance Test " style="width: 1007px; height: 887px;" data-mce-style="width: 1007px; height: 887px;" class="mce-item-table"><caption>Test Information for LightweightM2M-1.0-int-104 Interoperability Test</caption>
+            <thead>
+              <tr>
+                <td><strong>Test Case Id</strong></td>
+                <td>LightweightM2M-1.0-int-104</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Test Object</strong></td>
+                <td>Client and Server</td>
+              </tr>
+              <tr>
+                <td><strong>Test Case Description</strong></td>
+                <td>Test that the Client updates its registration with the Server when triggered with the Registration Update Trigger (see LwM2M Server object)</td>
+              </tr>
+              <tr>
+                <td><strong>Tool</strong></td>
+                <td><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="183">n</span>/a</td>
+              </tr>
+              <tr>
+                <td><strong>Test code</strong></td>
+                <td><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="184">n</span>/a</td>
+              </tr>
+              <tr>
+                <td><strong>Preconditions</strong></td>
+                <td>
+                  <ul>
+                    <li>The Client supports the minimum Configuration 2&nbsp;&nbsp; as defined in Annex&nbsp; <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="185">C</span></li>
+                    <li>Device is turned on</li>
+                    <li>The bootstrap procedure has been completed or the required bootstrap information is available to the client</li>
+                    <li>The Client&nbsp; is registered with the Server with a Lifetime of 20 sec (LightweightM2M-1.0-int-102)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p><strong>Test</strong></p>
+                  <p><strong>Procedure</strong></p>
+                </td>
+                <td>
+                  <p>Before Client Registration lifetime expired (lifetime is 20 sec) the Server sends Registration Update Trigger and the Client updates its registration via the UPDATE Operation</p>
+                  <p>Normal flow:</p>
+                  <ol>
+                    <li>Before Client registration expires on the Server (for test purposes a short registration lifetime is chosen 20 sec)</li>
+                    <li>A Registration Update Trigger message <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="186">CoAP</span> POST /1/0/8 is sent from Server to Client</li>
+                    <li>UPDATE (Registration) message (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="187">CoAP</span> POST) is sent from Client to Server</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Pass-Criteria</strong></td>
+                <td>
+                  <p><br>
+                  </p>
+                  <ol>
+                    <li>In test step 1., Client received a Registration Update Trigger via <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="188">SMS</span></li>
+                    <li>In test step 1., Server received a “Success” message (2.04 Changed) related to the EXECUTE command</li>
+                    <li>In test step 2., Server received UPDATE operation without parameter</li>
+                    <li>In test step 2., Client has received “Success” message (2.04 Changed) from Server related to its UPDATE message</li>
+                  </ol>
+                  <p>After test step 2., the Client is still registered in the Server while the initial Registration lifetime expired</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+      <section>
+        <h2>Device management &amp; Service <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Enablement" data-mce-index="189">Enablement</span> Interface [200-299]</h2>
+        <section>
+          <h2>LightweightM2M-1.0-int-201 – Querying basic information in Plain Text format</h2>
+          <p><br>
+          </p>
+        </section>
+      </section>
+      <section>
+        <h2>Information Reporting Interface [300-399]</h2>
+      </section>
+      <section>
+        <h2>Security [400-499]</h2>
+      </section>
+      <section>
+        <h2>Core Specific Objects Test cases [500-999]</h2>
+        <section>
+          <h2>Security Object (ID 0) [500-549]</h2>
+        </section>
+        <section>
+          <h2>Server Object (ID 1) [550-599]</h2>
+          <section>
+            <h2>6.1.6.2.1 LightweightM2M-1.0-int-551 – Access Check to the Resources</h2>
+            <p>LightweightM2M-1.0-int-215 Test Case&nbsp; (Setting basic information in <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TLV" data-mce-index="190">TLV</span> format) is covering the same functional scope than this LightweightM2M-1.0-int-551 Test Case. The Test Status of both Test Cases must be considered as identical.</p>
+          </section>
+          <section>
+            <h2>LightweightM2M-1.0-int-555 – Check of the Disable (De-Registration) capability</h2>
+            <p>&lt;Test Case to fill-up&gt;</p>
+            <p>Note :&nbsp; LightweightM2M-1.0-int-103 Test Case&nbsp; (De-Registration) is partially addressing the scope of this LightweightM2M-1.0-int-555 Test Case.</p>
+          </section>
+          <section>
+            <h2>LightweightM2M-1.0-int-556 – Check of the Update Registration capability</h2>
+            <p>LightweightM2M-1.0-int-104 Test Case&nbsp; (Registration Update Trigger) is covering the same functional scope than this LightweightM2M-1.0-int-556 Test Case. The Test Status of both Test Cases must be considered as identical.</p>
+          </section>
+          <section>
+            <h2>LightweightM2M-1.0-int-560 – Delayed Report Notification</h2>
+            <p>&lt;Test Cases to fill-up&gt;</p>
+          </section>
+          <section>
+            <h2>LightweightM2M-1.0-int-565 – Create Object Instance</h2>
+            <p>&lt;Test Cases to fill-up&gt;</p>
+          </section>
+          <section>
+            <h2>LightweightM2M-1.0-int-566 – Delete Object Instance</h2>
+            <p>&lt;Test Cases to fill-up&gt;</p>
+          </section>
+        </section>
+        <section>
+          <h2>Access Control Object (ID 2) [600-649]</h2>
+        </section>
+        <section>
+          <h2>LwM2M Device Object (ID 3) [650-699]</h2>
+        </section>
+      </section>
+    </section>
+  </section>
+  <div style="display: none;" data-mce-style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;&lt; Add/Remove reference rows to this table as needed - DELETE This Row &gt;&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMADICT" data-mce-index="191">OMADICT</span>]</div>
+  <div style="display: none;" data-mce-style="display: none;">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMADICT" data-mce-index="192">OMADICT</span>]</div>
+  <div style="display: none;" data-mce-style="display: none;">[<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="OMADICT" data-mce-index="193">OMADICT</span>]</div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;"><br>
+  </div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="194">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="195">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="196">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="197">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="198">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="199">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="200">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="201">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="202">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="203">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="204">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="205">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="206">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="207">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="208">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="209">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="210">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="211">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="212">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="213">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="214">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="215">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="216">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="217">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="218">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="219">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="220">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="221">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="222">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-con-number" data-mce-index="223">z-con-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="224">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="225">g</span>. IMPS-1.2-con-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">Test Object</div>
+  <div style="display: none;" data-mce-style="display: none;">&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="xxx-y" data-mce-index="226">xxx-y</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="z-int-number" data-mce-index="227">z-int-number</span>, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="228">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="229">g</span>. IMPS-1.2-int-001&gt;</div>
+  <div style="display: none;" data-mce-style="display: none;">The <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SCR" data-mce-index="230">SCR</span> (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="s" data-mce-index="231">s</span>) listed in this section should directly apply to this test case's Test Object and to the <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ETR" data-mce-index="232">ETR</span> requirement(<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="s" data-mce-index="233">s</span>) listed in the below <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ETR" data-mce-index="234">ETR</span> Reference section. Listing of the <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SCRs" data-mce-index="235">SCRs</span> tested implicitly should be avoided.</div>
+  <section class="appendix">
+    <h2>Additional Information</h2>
+    <section>
+      <h2>Example of Test Configuration and Setup</h2>
+      <p>The following hardware components were part of a test setup.</p>
+      <ul>
+        <li>M2M device equipped with LwM2M client</li>
+        <li>Computer that runs the browser interface to the LwM2M Server component</li>
+        <li>Server that runs the LwM2M Server software</li>
+        <li><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="USIM" data-mce-index="236">USIM</span> provisioned for use on the network.</li>
+        <li>External appliance which is connected directly to M2M device (<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="237">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="238">g</span>. light, temperature sensor, motor).</li>
+      </ul>
+      <p>In addition, the demonstration setup shall include the following software components:</p>
+      <ul>
+        <li>Measurement software which enables to see <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="239">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="240">g</span>. LwM2M messages and <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="241">CoAP</span> messages.
+          <ul>
+            <li>The software shall enable
+              <ul>
+                <li>GUI to trigger the chosen test cases</li>
+                <li>To see the flow of information between client and Server, <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="242">e</span>.<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="g" data-mce-index="243">g</span>. on LwM2M protocol level and on <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoAP" data-mce-index="244">CoAP</span> transport level.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </section>
+  <section class="appendix">
+    <h2>LwM2M Configurations</h2>
+    <p>When a Test Case references a certain Configuration of that Annex, it means the features of that configuration are the minimum ones which must be supported by LwM2M Clients &amp; Servers to pass that test; a richer configuration (superset) may be used instead, as long as it still contains the minimum features.&nbsp;</p>
+    <section>
+      <h2>Basic Configuration 1</h2>
+      <p><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="245">PSK</span> Mode support, no <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="246">SMS</span> support&nbsp;</p>
+      <table id="PSK Mode support, no SMS support" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 1 -&nbsp;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="247">PSK</span> Mode support, no <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="248">SMS</span> support&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="249">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="250">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="251">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="252">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="253">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="254">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="255">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="256">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="257">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="258">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="259">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="260">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="261">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="262">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="263">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="264">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="265">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="266">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="267">v</span>":1},</p>
+              <p><strong>&nbsp; </strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="268">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="269">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="270">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="271">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="272">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="273">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="274">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="275">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="276">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="277">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="278">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="279">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="280">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="281">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="282">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="283">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="284">n</span>":"3/0/11/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="285">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="286">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="287">sv</span>":"U"},</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Basic Configuration 2</h2>
+      <p><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="288">PSK</span> Mode &amp; <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="289">SMS</span> supports</p>
+      <table id="Basic Configuration 2" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 2 -&nbsp;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="290">PSK</span> Mode &amp; <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="291">SMS</span> supports</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="292">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="293">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="294">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="295">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="296">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="297">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="298">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="299">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="300">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="301">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="302">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="303">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="304">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="305">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="306">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="307">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="308">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="309">n</span>":"0/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="310">v</span>":3},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="311">n</span>":"0/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="312">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="KIc" data-mce-index="313">KIc</span>,KID,<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SPI" data-mce-index="314">SPI</span>,TAR&gt;},&nbsp;&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="315">n</span>":"0/0/8","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="316">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="317">SMS</span> Secret Keys&gt;},&nbsp;&nbsp;&nbsp;&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="318">n</span>":"0/0/9","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="319">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="MSISDN" data-mce-index="320">MSISDN</span>&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="321">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="322">v</span>":1},</p>
+              <p><strong>&nbsp; </strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="323">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="324">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="325">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="326">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="327">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="328">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="329">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="330">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="331">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="332">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="333">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="334">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="335">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="336">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="337">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="338">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="339">n</span>":"3/0/11/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="340">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="341">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="342">sv</span>":"US"},</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 3</h2>
+      <p>This configuration is a superset of Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="343">C</span>.1&nbsp;</p>
+      <table id="This configuration is a superset of Configuration C.1" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 3 -&nbsp;This configuration is a superset of Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="344">C</span>.1&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="345">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="346">e</span>”:[</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="347">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="348">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="349">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="350">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="351">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="352">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="353">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="354">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="355">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="356">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="357">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="358">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="359">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="360">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="361">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="362">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="363">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="364">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="365">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="366">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="367">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="368">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="369">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="370">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="371">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="372">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="373">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="374">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="375">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="376">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="377">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="378">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="379">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="380">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="381">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="382">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="383">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="384">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="385">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="386">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="387">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="388">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="389">sv</span>":"U"},</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="DisableDevice" data-mce-index="390">DisableDevice</span> Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 4</h2>
+      <p>Configuration 4 is a superset of Configuration 3 and can be used instead ; it implements the optional Resources related to external or internal battery which the voltage could vary.</p>
+      <table id="Configuration 4" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 4&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="391">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="392">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="393">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="394">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="395">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="396">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="397">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="398">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="399">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="400">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="401">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="402">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="403">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="404">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="405">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="406">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="407">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="408">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="409">v</span>":1},</p>
+              <p><strong>&nbsp;</strong> {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="410">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="411">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="412">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="413">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="414">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="415">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="416">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="417">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="418">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="419">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="420">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="421">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="422">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="423">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="424">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="425">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="426">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="427">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="428">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="429">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="430">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="431">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="432">n</span>":"3/0/6/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="433">v</span>":1},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="434">n</span>":"3/0/6/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="435">v</span>":2},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="436">n</span>":"3/0/7/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="437">v</span>":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery mV</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="438">n</span>":"3/0/7/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="439">v</span>":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery mV</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="440">n</span>":"3/0/8/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="441">v</span>":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; Internal Battery <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="mA" data-mce-index="442">mA</span></p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="443">n</span>":"3/0/8/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="444">v</span>":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp; External Battery <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="mA" data-mce-index="445">mA</span></p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="446">n</span>":"3/0/9","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="447">v</span>":0},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Internal Battery level</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="448">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="449">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="450">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="451">sv</span>":"U"},</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 5</h2>
+      <p>This configuration is a superset of Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="452">C</span>.1 and can be used instead; it implements the full Connectivity Monitoring Object ID:4</p>
+      <table id="Configuration 5" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 5&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="453">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="454">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="455">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="456">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="457">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="458">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="459">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="460">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="461">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="462">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="463">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="464">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="465">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="466">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="467">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="468">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="469">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="470">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="471">v</span>":1},</p>
+              <p><strong>&nbsp;</strong> {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="472">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="473">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="474">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="475">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="476">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="477">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="478">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="479">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="480">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="481">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="482">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="483">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="484">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="485">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="486">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="487">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="488">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="489">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="490">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="491">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="492">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="493">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="494">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="495">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="496">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="497">sv</span>":"U"},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="498">n</span>":"4/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="499">v</span>":&lt;Network Bearer&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="500">n</span>":"4/0/1/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="501">v</span>":&lt;Available Network Bearer 0&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="502">n</span>":"4/0/1/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="503">v</span>":&lt;Available Network Bearer 1&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="504">n</span>":"4/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="505">v</span>":&lt;Radio Signal Strength&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="506">n</span>":"4/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="507">v</span>":&lt;Link Quality&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="508">n</span>":"4/0/4/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="509">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IP" data-mce-index="510">IP</span> Address 0&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="511">n</span>":"4/0/4/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="512">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IP" data-mce-index="513">IP</span> Address 1&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="514">n</span>":"4/0/5/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="515">sv</span>":&lt;Router <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IP" data-mce-index="516">IP</span> Address 0&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="517">n</span>":"4/0/5/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="518">sv</span>":&lt;Router <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="IP" data-mce-index="519">IP</span> Address 1&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="520">n</span>":"4/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="521">v</span>":&lt;Link Utilization&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="522">n</span>":"4/0/7/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="523">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="APN" data-mce-index="524">APN</span> 0&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="525">n</span>":"4/0/7/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="526">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="APN" data-mce-index="527">APN</span> 1&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="528">n</span>":"4/0/8","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="529">v</span>":&lt;Cell ID&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="530">n</span>":"4/0/9","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="531">v</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMNC" data-mce-index="532">SMNC</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="533">n</span>":"4/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="534">v</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMCC" data-mce-index="535">SMCC</span>&gt;}</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 6</h2>
+      <p>Configuration 6 is a superset of Configuration 4 and can be used instead; the configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="536">C</span>.4, has been completed with all the optional resources of the Device Object.</p>
+      <table id="Configuration 6" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 6&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{ “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="537">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="538">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="539">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="540">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="541">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="542">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="543">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="544">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="545">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="546">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="547">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="548">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="549">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="550">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="551">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="552">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="553">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="554">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="555">v</span>":1},</p>
+              <p><strong>&nbsp;</strong> {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="556">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="557">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="558">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="559">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="560">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="561">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="562">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="563">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="564">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="565">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="566">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="567">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="568">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="569">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="570">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="571">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="572">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="573">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="574">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="575">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="576">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="577">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="578">n</span>":"3/0/6/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="579">v</span>":1},&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp; Internal Battery</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="580">n</span>":"3/0/6/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="581">v</span>":2},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp; External Battery</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="582">n</span>":"3/0/7/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="583">v</span>":&lt;Internal &nbsp;Battery Voltage mV&gt;},&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="584">n</span>":"3/0/7/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="585">v</span>":&lt;External Battery Voltage mV &gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="586">n</span>":"3/0/8/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="587">v</span>":&lt;Internal &nbsp;Battery Current <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="mA" data-mce-index="588">mA</span>&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="589">n</span>":"3/0/8/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="590">v</span>":&lt;External Battery Current <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="mA" data-mce-index="591">mA</span> &gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="592">n</span>":"3/0/9","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="593">v</span>":&lt; Internal Battery Level&gt;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="594">n</span>":"3/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="595">v</span>":&lt;Memory Free&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="596">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="597">v</span>":&lt;Error Code&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="598">n</span>":"3/0/13","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="t" data-mce-index="599">t</span>":&lt;Current Time &gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="600">n</span>":"3/0/14","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="601">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="UTC" data-mce-index="602">UTC</span> Offset&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="603">n</span>":"3/0/15","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="604">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="TimeZone" data-mce-index="605">TimeZone</span> &gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="606">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="607">sv</span>":U},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="608">n</span>":"3/0/17","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="609">sv</span>":&lt;Device Type&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="610">n</span>":"3/0/18","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="611">sv</span>":&lt;Hardware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="612">n</span>":"3/0/19","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="613">sv</span>":&lt;Software Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="614">n</span>":"3/0/20","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="615">sv</span>":&lt;Battery Status&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="616">n</span>":"3/0/21","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="617">sv</span>":&lt;Memory Total&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="618">n</span>":"3/0/22","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ol" data-mce-index="619">ol</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ExtDevInfo" data-mce-index="620">ExtDevInfo</span>&gt;}</p>
+              <p>&nbsp;&nbsp; &nbsp;]</p>
+              <p>}</p>
+              <p>Server Object ID:1 implements the mandatory&nbsp; Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp;&nbsp; - Reboot</p>
+              <p>Device Object ID:3 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:5&nbsp;&nbsp; - Factory Reset</p>
+              <p>Device Object ID:3 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:12 – Reset Error Code</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 7</h2>
+      <p>This configuration is a superset of Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="621">C</span>.1 and can be used instead ; it implements the full Location Object ID:6</p>
+      <table id="Configuration 7" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 7&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="622">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="623">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="624">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="625">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="626">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="627">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="628">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="629">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="630">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="631">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="632">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="633">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="634">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="635">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="636">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="637">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="638">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="639">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="640">v</span>":1},</p>
+              <p><strong>&nbsp; </strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="641">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="642">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="643">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="644">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="645">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="646">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="647">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="648">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="649">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="650">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="651">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="652">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="653">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="654">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="655">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="656">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="657">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="658">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="659">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="660">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="661">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="662">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="663">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="664">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="665">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="666">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="667">n</span>":"6/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="668">v</span>":43.5723},&nbsp;</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="669">n</span>":"6/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="670">v</span>":153.21760},&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="671">n</span>":"6/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="672">v</span>":140},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="673">n</span>":"6/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="674">v</span>":100},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="675">n</span>":"6/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="676">sv</span>":&nbsp;"0"},&nbsp; // opaque&nbsp; 3GPP-TS- 23.032&nbsp;&nbsp; Base64 representation</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="677">n</span>":"6/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="t" data-mce-index="678">t</span>”:1367491215},&nbsp; // time</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="679">n</span>":"6/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="680">v</span>": 3}</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 8</h2>
+      <table id="Configuration 8" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 8&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="681">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="682">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="683">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="684">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="685">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="686">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="687">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="688">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="689">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="690">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="691">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="692">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="693">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="694">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="695">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="696">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="697">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="698">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="699">v</span>":1},</p>
+              <p><strong>&nbsp; </strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="700">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="701">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="702">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="703">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="704">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="705">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="706">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="707">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="708">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="709">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="710">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="711">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="712">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="713">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="714">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="715">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="716">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="717">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="718">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="719">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="720">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="721">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="722">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="723">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="724">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="725">sv</span>":"U"},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="726">n</span>":"5/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="727">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="Firmaware" data-mce-index="728">Firmaware</span> Package&gt;},&nbsp;&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="729">n</span>":"5/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="730">sv</span>":&lt;Package <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="731">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="732">n</span>":"5/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="733">v</span>":&lt;State&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="734">n</span>":"5/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="735">v</span>":&lt;Update Result&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="736">n</span>":"5/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="737">sv</span>":&lt;Package Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="738">n</span>":"5/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="739">sv</span>":&lt;Package Version&gt;},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="740">n</span>":"5/0/8","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="741">v</span>":&lt;Firmware Update Protocol Support&gt; },&nbsp; // <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="CoaP" data-mce-index="742">CoaP</span> only if absent</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="743">n</span>":"5/0/9","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="744">v</span>":&lt;Firmware Update Delivery Method&gt; }</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Server Object ID:1 implements the optional&nbsp;&nbsp;&nbsp;&nbsp; Executable Resource ID:4&nbsp;&nbsp; - Disable</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+              <p>Device Object ID:5 implements the mandatory Executable Resource ID:2&nbsp; - Update</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Configuration 9</h2>
+      <p>This configuration is a superset of Configuration <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="C" data-mce-index="745">C</span>.1 and can be used instead ; it implements the full Connectivity Statistics Object ID:7</p>
+      <table id="Configuration 9" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Configuration 9&nbsp;</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="746">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="747">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="748">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="749">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="750">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="751">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="752">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="753">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="754">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="755">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="756">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="757">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="758">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="759">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="760">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="761">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="762">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="763">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="764">v</span>":1},</p>
+              <p><strong>&nbsp;</strong> {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="765">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="766">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="767">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="768">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="769">n</span>":"1/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="770">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="771">n</span>":"1/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="772">v</span>":10},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="773">n</span>":"1/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="774">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="775">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="776">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="777">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="778">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="779">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="780">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="781">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="782">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="783">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="784">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="785">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="786">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="787">n</span>":"3/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="788">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="789">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="790">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="791">n</span>":"7/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="792">v</span>":0},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="793">n</span>":"7/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="794">v</span>":0},&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="795">n</span>":"7/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="796">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="797">n</span>":"7/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="798">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="799">n</span>":"7/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="800">v</span>":&nbsp;0},&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="801">n</span>":"7/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="802">v</span>”:0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="803">n</span>":"7/0/8","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="804">v</span>":0}</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>&nbsp;Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+              <p>Device Object ID:7 implements the mandatory Executable Resource ID:6&nbsp; - Start</p>
+              <p>Device Object ID:7 implements the mandatory Executable Resource ID:7&nbsp; - Stop</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <section>
+      <h2>Basic Connectivity Management Configuration 10</h2>
+      <p><span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="805">PSK</span> Mode support, no <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="806">SMS</span> support</p>
+      <table id="Basic Connectivity Management Configuration 10" style="width: 100%;" data-mce-style="width: 100%;" class="mce-item-table"><caption style="text-align: left;" data-mce-style="text-align: left;">Basic Connectivity Management Configuration 10 -&nbsp;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="807">PSK</span> Mode support, no <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="SMS" data-mce-index="808">SMS</span> support</caption>
+        <thead>
+          <tr>
+            <td>&nbsp;{“<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bn" data-mce-index="809">bn</span>”:“/”,
+              <p>&nbsp;&nbsp; “<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="e" data-mce-index="810">e</span>”:[</p>
+              <p>&nbsp;<strong>&nbsp;</strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="811">n</span>":"0/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="812">sv</span>": &lt;LwM2M Server <span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="URI" data-mce-index="813">URI</span>&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="814">n</span>":"0/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="815">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="816">n</span>":"0/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="817">v</span>":0},</p>
+              <p>&nbsp;&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="818">n</span>":"0/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="819">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="PSK" data-mce-index="820">PSK</span> Identity&gt;},&nbsp; // opaque in Base64</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="821">n</span>":"0/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="822">sv</span>": &lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="823">n</span>/a&gt; },</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="824">n</span>":"0/0/5","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="825">sv</span>": &lt;Secret Key&gt;},&nbsp;&nbsp;&nbsp; // opaque in Base64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="826">n</span>":"0/0/10","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="827">v</span>":1},</p>
+              <p><strong>&nbsp; </strong>{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="828">n</span>":"1/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="829">v</span>":1},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="830">n</span>":"1/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="831">v</span>":86400},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="832">n</span>":"1/0/6","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="bv" data-mce-index="833">bv</span>":false},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="834">n</span>":"1/0/7","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="835">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="836">n</span>":"3/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="837">sv</span>":&lt;Manufacturer Name&gt;},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="838">n</span>":"3/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="839">sv</span>":&lt;Model Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="840">n</span>":"3/0/2","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="841">sv</span>":&lt;Serial Number&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="842">n</span>":"3/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="843">sv</span>":&lt;Firmware Version&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="844">n</span>":"3/0/11/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="845">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="846">n</span>":"3/0/16","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="847">sv</span>":"U"},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="848">n</span>":"10/0/06","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="849">v</span>":&lt;tbd&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="850">n</span>":"10/0/11","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="ov" data-mce-index="851">ov</span>":”11:0”},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="852">n</span>":"11/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="853">sv</span>":&lt;Profile Name&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="854">n</span>":"11/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="b" data-mce-index="855">b</span>":true},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="856">n</span>":"12/0/0","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="857">sv</span>":&lt;<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="wlan" data-mce-index="858">wlan</span> identifier&gt;”},</p>
+              <p><strong>&nbsp;</strong>&nbsp;{"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="859">n</span>":"12/0/1","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="860">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="861">n</span>":"12/0/3","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="862">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="863">n</span>":"12/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="sv" data-mce-index="864">sv</span>":&lt;MAC address&gt;},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="865">n</span>":"12/0/8","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="866">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="867">n</span>":"12/0/4","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="868">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="869">n</span>":"12/0/14","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="870">v</span>":0},</p>
+              <p>&nbsp; {"<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="n" data-mce-index="871">n</span>":"12/0/15","<span class="mce-spellchecker-word" data-mce-bogus="1" data-mce-word="v" data-mce-index="872">v</span>":0},</p>
+              <p>&nbsp;&nbsp;&nbsp; ]</p>
+              <p>}</p>
+              <p>Server Object ID:1 implements the mandatory Executable Resource ID:8&nbsp;&nbsp; - Registration&nbsp; Update Trigger</p>
+              <p>Device Object ID:3 implements the mandatory Executable Resource ID:4&nbsp; - Reboot</p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+  </section>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">Client and Server</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">LightweightM2M-1.0-int-201</div>
+  <div style="display: none;" data-mce-style="display: none;">Client and Server</div>
+  <div style="display: none;" data-mce-style="display: none;">Client and Server</div>
+</body>
